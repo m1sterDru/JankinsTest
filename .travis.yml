@@ -13,8 +13,6 @@ before_script:
 
 script:
   - ng lint
-  - ng test
-  - ng e2e
 
 after_failure:
   - git reset --hard HEAD~1
