@@ -7,7 +7,7 @@ branches:
     - master
 
 before_install:
-- echo -e "machine github.com\n  login $GITHUB_TOKEN" >> ~/.netrc
+  - echo -e "machine github.com\n  login $GITHUB_TOKEN" >> ~/.netrc
 
 script: gulp travis
 
@@ -18,5 +18,5 @@ script:
   - ng lint
 
 after_fail:
-  - git reset --hard HEAD~2
+  - git reset --hard HEAD~1
   - git push -f origin master
