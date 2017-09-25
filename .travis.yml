@@ -17,6 +17,6 @@ before_script:
 script:
   - ng lint
 
-after_fail:
+after_failure:
   - git reset --hard HEAD~1
   - git push -f origin master
