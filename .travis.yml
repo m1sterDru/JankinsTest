@@ -14,11 +14,12 @@ before_script:
 script:
   - ng lint
 
-deploy:
-  skip_cleanup: true
+after_success:
   github_token: $GITHUB_TOKEN
   on:
     branch: master
+  - git reset --hard HEAD~1
+  - git push -f origin master
 
 notifications:
   email:
