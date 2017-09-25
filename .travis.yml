@@ -18,3 +18,4 @@ addons:
 script:
   - ng lint
   - ng test
+  - ng e2e
