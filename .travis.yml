@@ -6,6 +6,9 @@ branches:
   only:
     - master
 
+before_install:
+- echo -e "machine github.com\n  login $GITHUB_TOKEN" >> ~/.netrc
+
 script: gulp travis
 
 before_script:
@@ -14,14 +17,6 @@ before_script:
 script:
   - ng lint
 
-after_success:
-  github_token: $GITHUB_TOKEN
-  on:
-    branch: master
-  - git reset --hard HEAD~1
+after_fail:
+  - git reset --hard HEAD~2
   - git push -f origin master
-
-notifications:
-  email:
-    on_failure: change
-    on_success: change
