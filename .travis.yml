@@ -2,21 +2,22 @@ language: node_js
 node_js:
   - "stable"
 
-branches:
-  only:
-    - master
+sudo: false
+
+addons:
+  firefox: latest
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 
 before_script:
   - npm install -g @angular/cli
-  - webdriver-manager update
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 
-addons:
-  firefox: "49.0"
-
 script:
   - ng lint
-  - ng e2e
   - ng test
