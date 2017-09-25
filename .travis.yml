@@ -14,13 +14,12 @@ before_script:
 script:
   - ng lint
 
-after_failure:
-  - git reset --hard HEAD~1
-  - git push -f origin master
-
-after_success:
-  - git commit -am "auto commit"
-  - git push -u origin master
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN 1ypw7MfCWNhfpHLmx1se
+  on:
+    branch: master
 
 notifications:
   email:
