@@ -16,15 +16,14 @@ branches:
     -master
 
 before_install:
-  - npm install -g @angular/cli
+  - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3 # give xvfb some time to start
 
 script:
   - ng lint
-  - ng test --watch false
-  - ng e2e
+  - karma start ./karma.conf.js --single-run
 
 notifications:
   webhooks:
