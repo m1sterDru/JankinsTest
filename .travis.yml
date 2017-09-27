@@ -18,5 +18,5 @@ before_install:
 
 script:
   - ng lint
-  - ng test && ng e2e
+  - ng e2e
 
