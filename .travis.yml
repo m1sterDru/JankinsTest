@@ -19,5 +19,8 @@ before_install:
 script:
   - ng lint
   - ng e2e && ng test
-  
+
+after_failure:
+  - git reset --hard HEAD~1
+  - git push -f origin master
 
